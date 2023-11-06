@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>404</title>
+</head>
+<body>
+	<style>
+		*{
+			padding:0;
+			margin:0;
+			box-sizing:border-box;
+			font-family: sans-serif;
+		}
+		body{
+			width:100%;
+			height:100dvh;
+			display: flex;
+			background: #0d1117;
+			justify-content: space-evenly;
+			align-items: center;
+			flex-wrap: wrap;
+			& > * {
+				width: 500px;
+			}
+		}
+		main{
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: column;
+			height: 100%;
+			gap: 30px;
+		}
+		.error{
+			height: 100%;
+			padding: 50px 25px;
+			font-size: 24px;
+			color: #faa;
+			& > p{
+				border-radius: 30px;
+				height: 100%;
+				padding: 25px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				background: #1116;
+				overflow-y: auto;
+				&::-webkit-scrollbar{
+					all:unset;
+					width: 10px;
+				}
+				&::-webkit-scrollbar-thumb{
+					background: #1119;
+					border-radius: 100vw;
+				}
+			}
+		}
+		h1{
+			color: #a11;
+			border-radius: 100vh;
+			padding: 20px;
+			font-size: 15vmin;
+			background: #0d111780;
+		}
+		#back{
+			position: fixed;
+			height: 100dvh;
+			width: 100vw;
+			z-index: -1;
+			filter: blur(100px) brightness(40%);
+		}
+		#mini{
+			all:unset;
+			position: relative;
+			height: 60vmin;
+			width: 6	0vmin;
+			z-index: 2;
+		}
+		.mm{
+			overflow: hidden;
+			border-radius: 50px;
+		}
+	</style>
+	<img id="back" src="./assets/images/hollo404.png" alt="no cargó" height="300px" width="300px">
+	<main>
+		<h1>Error 404</h1>
+		<div class="mm">
+			<img id="mini" src="./assets/images/hollo404.png" alt="no cargó" height="300px" width="300px">
+		</div>
+	</main>
+	<div class="error">
+		<p>
+			Resource not found
+		</p>
+	</div>
+	<script>
+		"use strict";
+		const qs = sel => document.querySelector(sel)
+		const qsa = sel => document.querySelectorAll(sel)
+		const gti = sel => document.getElementById(sel)
+		const gtg = sel => document.getElementsByTagName(sel)
+		
+		const images=gtg("img")
+		for(let entrie of images){
+			const route = entrie.getAttribute("src")
+			entrie.setAttribute("src",`${location.origin}/view/${route}`)
+		}
+	</script>
+</body>
+</html>
