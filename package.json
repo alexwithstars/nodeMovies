@@ -2,18 +2,18 @@
   "name": "rest-api",
   "version": "1.0.0",
   "description": "mi primera rest api con express",
-  "main": "app.js",
+  "main": "app.mjs",
   "type": "module",
   "scripts": {
-    "start": "node app.js",
-    "main": "node --watch app.js",
+    "start": "node app.mjs",
+    "main": "node --watch app.mjs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Alexwithstars",
   "license": "ISC",
   "dependencies": {
     "express": "4.18.2",
-    "mime-types": "^2.1.35",
+    "mime-types": "2.1.35",
     "mysql2": "3.6.2",
     "zod": "3.22.4"
   }
