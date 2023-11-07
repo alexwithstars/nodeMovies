@@ -31,5 +31,5 @@ export function createApp({movieModel}){
 	})
 }
 
-import {MovieModel} from "./models/mysql/movie.mjs"
+import {MovieModel} from "./models/local/movie.mjs"
 createApp({movieModel:MovieModel})
