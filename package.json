@@ -2,10 +2,11 @@
   "name": "rest-api",
   "version": "1.0.0",
   "description": "mi primera rest api con express",
-  "main": "app.mjs",
+  "main": "app.js",
+  "type": "module",
   "scripts": {
-    "start": "node app.mjs",
-    "main": "node --watch app.mjs",
+    "start": "node app.js",
+    "main": "node --watch app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Alexwithstars",

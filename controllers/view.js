@@ -1,4 +1,4 @@
-import {viewModel} from "../models/local/view.mjs"
+import {viewModel} from "../models/local/view.js"
 import {lookup} from "mime-types"
 
 export class viewController{

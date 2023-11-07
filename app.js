@@ -1,7 +1,7 @@
 // imports ----------
 import express  from "express"
-import {createMovieRouter} from "./routes/movies.mjs"
-import {viewRouter} from "./routes/view.mjs"
+import {createMovieRouter} from "./routes/movies.js"
+import {viewRouter} from "./routes/view.js"
 
 
 export function createApp({movieModel}){
@@ -31,5 +31,5 @@ export function createApp({movieModel}){
 	})
 }
 
-import {MovieModel} from "./models/local/movie.mjs"
+import {MovieModel} from "./models/local/movie.js"
 createApp({movieModel:MovieModel})

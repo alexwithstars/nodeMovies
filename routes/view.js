@@ -1,5 +1,5 @@
 import {Router} from "express"
-import {viewController} from "../controllers/view.mjs"
+import {viewController} from "../controllers/view.js"
 
 export const viewRouter=Router()
 
