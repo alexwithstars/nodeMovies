@@ -26,9 +26,8 @@ export function createApp({movieModel}){
 
 	// listen ----------
 	const PORT = process.env.PORT ?? 3000
-	const IP = process.env.IP ?? "127.0.0.1"
-	app.listen(PORT,IP,()=>{
-		console.log(`listening on http://${IP}:${PORT}`)
+	app.listen(PORT,()=>{
+		console.log(`listening on port ${PORT}`)
 	})
 }
 
