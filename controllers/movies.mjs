@@ -1,4 +1,4 @@
-import {validateMovie,partialValidateMovie}  from "../schemas/movies.js"
+import {validateMovie,partialValidateMovie}  from "../schemas/movies.mjs"
 
 export class MovieController{
 	constructor({movieModel}){

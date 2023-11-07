@@ -1,5 +1,5 @@
 import {Router} from "express"
-import {MovieController} from "../controllers/movies.js"
+import {MovieController} from "../controllers/movies.mjs"
 
 
 export function createMovieRouter({movieModel}){
