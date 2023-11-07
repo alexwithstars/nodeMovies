@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "mi primera rest api con express",
   "main": "app.mjs",
-  "type": "module",
   "scripts": {
     "start": "node app.mjs",
     "main": "node --watch app.mjs",
