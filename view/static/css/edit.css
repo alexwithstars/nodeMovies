@@ -7,8 +7,10 @@ body{
 	width:100%;
 	min-height:100dvh;
 	display: flex;
-	align-items: start;
+	align-items: center;
 	padding: 50px 0;
-	justify-content: center;
+	justify-content: start;
+	gap: 50px;
+	flex-direction: column;
 	background: #111;
 }

@@ -9,10 +9,23 @@
 	<title>Editar</title>
 </head>
 <body>
-	<form id="form" method="patch">
-		<h1>Editar pelicula</h1>
+	<form id="idForm" class="form">
+		<h1>Selecciona la pelicula</h1>
+		<movieForm>	
+			<div class="inp">
+				<input type="text" name="id" id="id" required>
+				<label for="id">Id</label>
+				<span class="valid message" id="message-id">Id no valida</span>
+			</div>
+			<div class="sub-cont">
+				<input type="submit" value="Buscar pelicula">
+			</div>
+		</movieForm>
 		
 	</form>
-	<script src="static/js/sendForm.js" type="module"></script>
+	<form id="form" type="actualizar" class="form" method="patch">
+		<h1>Editar pelicula</h1>
+	</form>
+	<script src="static/js/edit.js" type="module"></script>
 </body>
 </html>

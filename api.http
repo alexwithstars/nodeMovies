@@ -35,13 +35,13 @@ Content-Type: application/json
 }
 
 ###
-PATCH http://localhost:3000/movies/04986507-b3ed-442c-8ae7-4c5df804f896
+PATCH http://localhost:3000/movies/dgb
 Content-Type: application/json
 
 {
   "sql":"pito",
   "genre":["Crime","Action"],
-  "year":"1998"
+  "year":1998
 }
 
 ###

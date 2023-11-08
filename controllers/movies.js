@@ -20,9 +20,9 @@ export class MovieController{
 		const movie =await this.movieModel.getById({id})
 		if(movie) return res.json(movie)
 		res.status(404)
-	next("Movie not found")
-}
-getGenres = async (req,res,next) => {
+		next("Movie not found")
+	}
+	getGenres = async (req,res,next) => {
 		res.json(await this.movieModel.getGenres())
 	}
 	create = async (req,res,next) => {

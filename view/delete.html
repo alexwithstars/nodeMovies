@@ -4,10 +4,28 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="static/css/delete.css">
+	<link rel="stylesheet" type="text/css" href="static/css/movieForm.css">
+	<link rel="stylesheet" type="text/css" href="static/css/notify.css">
 	<title>Eliminar</title>
 </head>
 <body>
-	
-	<script src="static/js/delete.js" type="text/javascript"></script>
+	<form id="idForm" class="form">
+		<h1>Selecciona la pelicula</h1>
+		<movieForm>	
+			<div class="inp">
+				<input type="text" name="id" id="id" required>
+				<label for="id">Id</label>
+				<span class="valid message" id="message-id">Id no valida</span>
+			</div>
+			<div class="sub-cont">
+				<input type="submit" value="Buscar pelicula">
+			</div>
+		</movieForm>
+		
+	</form>
+	<form id="form" type="Eliminar" class="form" method="delete">
+		<h1>Eliminar pelicula</h1>
+	</form>
+	<script src="static/js/delete.js" type="module"></script>
 </body>
 </html>

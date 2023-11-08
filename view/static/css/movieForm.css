@@ -1,4 +1,4 @@
-#form{
+.form{
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -67,11 +67,14 @@
 			}
 			& > input{
 				text-overflow: ellipsis;
-				width: 100%;
 				padding: 0 var(--pad);
 				&:is(:focus,.not-empty) ~ label{
 					color: #0DF;
 					transform: translate(calc(var(--pad) - calc(var(--pad) * 2)),-100%) scale(0.8);
+				}
+				&:disabled{
+					background: #8001;
+					cursor: not-allowed;
 				}
 				&::placeholder{
 					opacity: 0;
@@ -185,6 +188,7 @@
 			font-weight: 600;
 			font-size: 18px;
 			letter-spacing: 3px;	
+			text-transform: capitalize;
 		}
 	}
 }

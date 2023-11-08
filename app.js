@@ -26,8 +26,9 @@ export function createApp({movieModel}){
 
 	// listen ----------
 	const PORT = process.env.PORT ?? 3000
-	app.listen(PORT,()=>{
-		console.log(`listening on port ${PORT}`)
+	const server = app.listen(PORT,()=>{
+		const addres = server.address()
+		console.log(`listening on http://${(addres.address=="::" ? "localhost":addres.address)}:${PORT}`)
 	})
 }
 

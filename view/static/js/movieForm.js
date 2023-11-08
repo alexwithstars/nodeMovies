@@ -41,7 +41,7 @@ const form=`
 </div>
 </div>
 <div class="sub-cont">
-<input type="submit" value="Crear">
+<input type="submit" value="">
 </div>
 `
 const element = document.createElement("movieForm")
