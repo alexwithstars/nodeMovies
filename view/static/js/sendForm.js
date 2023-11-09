@@ -78,6 +78,7 @@ export class Form{
 			})
 			newMovie.genre = this.candidateGenres
 			const method = this.form.getAttribute("method").toUpperCase()
+			this.inpsub.classList.add("loading")
 			const request = await fetch(`${location.origin}/${method=="POST" ? "movies" : `movies/${gti("id").value}`}`,{
 				method,
 				headers:{
@@ -90,6 +91,7 @@ export class Form{
 				})
 				console.log("Fetch error: ",e)
 			})
+			this.inpsub.classList.remove("loading")
 			if(!request) return
 			const response = await request.json()
 			this.allInputs.forEach(entrie=>{
@@ -148,19 +150,26 @@ export class Form{
 		if(!text) return
 		const gen=document.createElement("div")
 		gen.textContent=text
-		gen.addEventListener("click",e=>{
-			this.candidateGenres.splice(this.candidateGenres.indexOf(e.target.textContent),1)
-			this.genre.toggleAttribute("required",this.candidateGenres.length<1)
-			this.newGenres.removeChild(e.target)
-			sessionStorage.setItem("genre",this.candidateGenres)
-		})
+		gen.addEventListener("click",this.#listener)
 		this.candidateGenres.push(text)
 		this.genre.toggleAttribute("required",this.candidateGenres.length<1)
 		this.newGenres.appendChild(gen)
 	}
+	#listener = (e)=>{
+		this.candidateGenres.splice(this.candidateGenres.indexOf(e.target.textContent),1)
+		this.genre.toggleAttribute("required",this.candidateGenres.length<1)
+		this.newGenres.removeChild(e.target)
+		sessionStorage.setItem("genre",this.candidateGenres)
+	}
+	removeListeners(){
+		[...this.newGenres.children].forEach(entrie=>{
+			entrie.removeEventListener("click",this.#listener)
+		})
+	}
 	setForm(movie){
 		this.inps.forEach(entrie=>{
 			entrie.value=movie[entrie.name] ?? ''
+			sessionStorage.setItem(entrie.name,entrie.value)
 			entrie.classList.toggle("not-empty",entrie.value.trim().length>0)
 		})
 		let gens = movie["genre"]
@@ -170,5 +179,6 @@ export class Form{
 			if(typeof gens=="string") gens=gens.split(',')
 			gens.forEach(entrie=>this.#setCandidate(entrie))
 		}
+		sessionStorage.setItem("genre",this.candidateGenres)
 	}
 }

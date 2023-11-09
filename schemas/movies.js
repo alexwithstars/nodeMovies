@@ -7,13 +7,12 @@ const movieSchema=zod.object({
 	director: zod.string(),
 	duration: zod.number().int().positive(),
 	rate: zod.number().min(0).max(10).default(5),
-	poster: zod.string().url().refine(url=>{
-		const type = lookup(url)
-		if(!type){
-			return false
-		}
-		const [img]=type.split("/")
-		return img=="image"
+	poster: zod.string().url().refine(async url=>{
+		try{
+			const request = await fetch(url,{method:"HEAD"})
+			if(!request.ok) return false
+			return request.headers.get("Content-Type").split("/")[0]=="image"
+		}catch{return false}
 	}),
 	genre: zod.array(
 		zod.enum(['action','animation','adventure','crime','comedy','drama','fantasy','romance','horror','thriller','sci-fi','biography'])
@@ -26,7 +25,7 @@ export function validateMovie(input){
 			input.genre=[...new Set(input.genre.map(entrie=>entrie.toLowerCase()))]
 		}catch{}
 	}
-	return movieSchema.safeParse(input)
+	return movieSchema.safeParseAsync(input)
 }
 
 export function partialValidateMovie(input){
@@ -35,5 +34,5 @@ export function partialValidateMovie(input){
 			input.genre=[...new Set(input.genre.map(entrie=>entrie.toLowerCase()))]
 		}catch{}
 	}
-	return movieSchema.partial().safeParse(input)
+	return movieSchema.partial().safeParseAsync(input)
 }

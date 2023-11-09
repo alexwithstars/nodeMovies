@@ -15,6 +15,7 @@ const form = new Form()
 form.inps.forEach(entrie=>{
 	entrie.toggleAttribute("disabled",true)
 })
+form.genre.toggleAttribute("disabled",true)
 
 async function handler(e){
 	e.preventDefault()
@@ -31,6 +32,9 @@ async function handler(e){
 		})
 		return
 	}
-	if(e.target==idForm) form.setForm(movie)
+	if(e.target==idForm){
+		form.setForm(movie)
+		form.removeListeners()
+	}
 }
 idForm.addEventListener("submit",handler)

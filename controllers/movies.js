@@ -26,7 +26,7 @@ export class MovieController{
 		res.json(await this.movieModel.getGenres())
 	}
 	create = async (req,res,next) => {
-		const movie = validateMovie(req.body)
+		const movie =await validateMovie(req.body)
 		if(movie.error){
 			res.status(400)
 			return next(movie.error.issues)
@@ -45,7 +45,7 @@ export class MovieController{
 		res.json(response)
 	}
 	update = async (req,res,next) => {
-		const newData = partialValidateMovie(req.body)
+		const newData = await partialValidateMovie(req.body)
 		if(newData.error){
 			res.status(400)
 			return next(newData.error.issues)

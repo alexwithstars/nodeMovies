@@ -1,7 +1,8 @@
 .notify{
 	position: fixed;
 	top: 0;
-	translate:0 -150%;
+	left: 50%;
+	translate:-50% -150%;
 	animation: show 0.3s forwards ease-out;
 	padding: 2px;
 	--bdr:100vmax;
@@ -70,14 +71,14 @@
 }
 @keyframes show {
 	to{
-		translate:0 100%;
+		translate:-50% 100%;
 	}
 }
 @keyframes hide{
 	from{
-		translate:0 100%;
+		translate:-50% 100%;
 	}
 	to{
-		translate:0 -125%;
+		translate:-50% -125%;
 	}
 }

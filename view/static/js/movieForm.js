@@ -42,6 +42,11 @@ const form=`
 </div>
 <div class="sub-cont">
 <input type="submit" value="">
+<div class="load">
+<span style="--delay:0s;"></span>
+<span style="--delay:0.2s;"></span>
+<span style="--delay:0.4s;"></span>
+</div>
 </div>
 `
 const element = document.createElement("movieForm")

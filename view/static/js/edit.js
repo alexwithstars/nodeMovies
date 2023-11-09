@@ -6,6 +6,7 @@ const gtg = sel => document.getElementsByTagName(sel)
 
 const idForm = gti("idForm")
 const id = gti("id")
+const idSub = qs("#idForm input[type='submit']")
 
 import {Notify} from "./notify.js";
 import {Form} from "./sendForm.js"
@@ -14,8 +15,10 @@ const form = new Form()
 
 async function handler(e){
 	e.preventDefault()
+	idSub.classList.add("loading")
 	const request = await fetch(`${location.origin}/movies/${id.value}`)
 	const movie = await request.json()
+	idSub.classList.remove("loading")
 	gti(`message-id`).classList.add("valid")
 	if(movie.error){
 		id.scrollIntoView({block:"center",behavior:"smooth"})
