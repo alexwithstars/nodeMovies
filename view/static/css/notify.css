@@ -69,6 +69,19 @@
 .hide{
 	animation: hide 0.2s forwards ease-in;
 }
+.link{
+	position: fixed;
+	left: 30px;
+	top: 20px;
+	cursor: pointer;
+}
+.back{
+	height: 30px;
+	transition: scale 0.3s;
+	&:hover{
+		scale: 1.2 1;
+	}
+}
 @keyframes show {
 	to{
 		translate:-50% 100%;

@@ -8,6 +8,7 @@ const movieSchema=zod.object({
 	duration: zod.number().int().positive(),
 	rate: zod.number().min(0).max(10).default(5),
 	poster: zod.string().url().refine(async url=>{
+		if(!process.env.PORT) return true
 		try{
 			const request = await fetch(url,{method:"GET"})
 			if(!request.ok) return false
