@@ -34,3 +34,24 @@ async function handler(e){
 }
 idForm.addEventListener("submit",handler)
 form.form.addEventListener("submit",handler)
+
+globalThis.navigation.addEventListener('navigate', (event) => {
+    const toUrl = new URL(event.destination.url)
+
+    // es una página externa? si es así, lo ignoramos
+    if (location.origin !== toUrl.origin) return
+
+    // si es una navegación en el mismo dominio (origen)
+    event.intercept({
+      async handler () {
+        const data = await fetchPage(toUrl.pathname)
+
+        // utilizar la api de View Transition API
+        document.startViewTransition(() => {
+          // el scroll hacia arriba del todo
+          document.body.innerHTML = data
+          document.documentElement.scrollTop = 0
+        })
+      }
+    })
+  })

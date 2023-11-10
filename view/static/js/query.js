@@ -74,7 +74,7 @@ const movies=await (async function(){
 	})
 	mainContent.innerHTML = moviesData
 	;[...mainContent.children].forEach(entrie=>entrie.addEventListener("click",e=>{
-		navigator.clipboard.writeText(e.target.id)
+		navigator.clipboard.writeText(entrie.id)
 		.then(()=>{
 			new Notify({
 				text:`Id Copiado exitosamente`,

@@ -9,7 +9,7 @@ const movieSchema=zod.object({
 	rate: zod.number().min(0).max(10).default(5),
 	poster: zod.string().url().refine(async url=>{
 		try{
-			const request = await fetch(url,{method:"HEAD"})
+			const request = await fetch(url,{method:"GET"})
 			if(!request.ok) return false
 			return request.headers.get("Content-Type").split("/")[0]=="image"
 		}catch{return false}

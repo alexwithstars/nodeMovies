@@ -1,11 +1,11 @@
 import crypto  from "node:crypto"
 import mysql from "mysql2/promise"
 
-const config = process.env.CON_STRING ?? {
+const config = process.env.DATABASE ?? {
 	host:"localhost",
 	port:3306,
 	user:"root",
-	password:process.env.PASSWORD ?? "13254600",
+	password:"13254600",
 	database:"moviesdb"
 }
 const connection = await mysql.createConnection(config)
