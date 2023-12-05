@@ -2,6 +2,7 @@
 import express  from "express"
 import {createMovieRouter} from "./routes/movies.js"
 import {viewRouter} from "./routes/view.js"
+import {cors} from "./middlewares/cors.js"
 
 
 export function createApp({movieModel}){
@@ -9,6 +10,9 @@ export function createApp({movieModel}){
 	const app=express()
 	app.disable("x-powered-by")
 	app.use(express.json())
+
+	// cors ----------
+	app.use(cors)
 
 	// movies ----------
 	app.use("/movies",createMovieRouter({movieModel}))

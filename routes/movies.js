@@ -5,8 +5,6 @@ import {MovieController} from "../controllers/movies.js"
 export function createMovieRouter({movieModel}){
 	const moviesRouter = Router()
 	const movieController = new MovieController({movieModel})
-	// cors ----------
-	moviesRouter.use(movieController.cors)
 
 	// get ----------
 	moviesRouter.get("/",movieController.getAll)

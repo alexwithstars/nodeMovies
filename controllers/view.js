@@ -2,11 +2,6 @@ import {viewModel} from "../models/local/view.js"
 import {lookup} from "mime-types"
 
 export class viewController{
-	static async cors(req,res,next){
-		res.header("Access-Control-Allow-Origin","*")
-		res.header("Access-Control-Allow-Methods","*")
-		next()
-	}
 	static async getPage(req,res,next){
 		const {page}=req.params
 		const response=await viewModel.getResource({url:`../view/${page}.html`})

@@ -4,11 +4,6 @@ export class MovieController{
 	constructor({movieModel}){
 		this.movieModel=movieModel
 	}
-	async cors(req,res,next){
-		res.header("Access-Control-Allow-Origin","*")
-		res.header("Access-Control-Allow-Methods","*")
-		next()
-	}
 	getAll = async (req,res) => {
 		const {genre} = req.query
 		const movies = await this.movieModel.getAll({genre})
