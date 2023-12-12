@@ -1,6 +1,6 @@
 // cors ----------
 const ALLOW_ORIGINS=[
-	"https://nodemovies-dev-xzxj.2.us-1.fl0.io",
+	"https://nodeusers-dev-xzxj.2.us-1.fl0.io",
 	"http://localhost:3000"
 ]
 export function cors(req,res,next){

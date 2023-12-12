@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="./static/css/start.css">
+	<link rel="stylesheet" type="text/css" href="./static/css/notify.css">
+	<title>enter</title>
+</head>
+<body>
+	<h1>Alex Movies</h1>
+	
+	<main>
+		<section class="actions">
+			<div class="login active" id="logmodel">Login</div>
+			<div class="signup" id="signmodel">Signup</div>
+		</section>
+		<div class="shape first"></div>
+		<div class="shape second"></div>
+		<form id="form" method="post">
+			<h2>Login</h2>
+			<div class="inp">
+				<label for="username">Username</label>
+				<input type="text" id="username" placeholder="username" minlength="5" required>
+				<ul>
+					<li>min length: 5</li>
+					<li>max length: 50</li>
+				</ul>
+			</div>
+			<div class="inp">
+				<label for="password">Password</label>
+				<input type="password" id="password" placeholder="password" minlength="8" required>
+				<img src="./assets/images/eye.svg" alt="eye" class="switch" id="open">
+				<img src="./assets/images/eye-closed.svg" alt="eye closed" class="switch show" id="closed">
+				<ul>
+					<li>min length: 8</li>
+					<li>max length: 50</li>
+				</ul>
+			</div>
+			<section id="formSign">
+				<div class="inp">
+					<label for="confirm">Confirm password</label>
+					<input type="password" placeholder="confirm password" minlength="8" id="confirm">
+					<ul>
+						<li>min length: 8</li>
+						<li>max length: 50</li>
+					</ul>
+				</div>
+				<div class="inp">
+					<label for="email">Email</label>
+					<input type="email" id="email" placeholder="email">
+				</div>
+			</section>
+			<button id="send">Login
+				<div id="loading">
+					<span style="--delay:0.2s;"></span>
+					<span style="--delay:0.5s;"></span>
+					<span style="--delay:0.8s;"></span>
+				</div>
+			</button>
+		</form>
+	</main>
+	<script src="./static/js/start.js" type="module"></script>
+</body>
+</html>

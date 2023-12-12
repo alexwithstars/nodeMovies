@@ -1,11 +1,12 @@
 // imports ----------
 import express  from "express"
 import {createMovieRouter} from "./routes/movies.js"
+import {createUserRouter} from "./routes/users.js"
 import {viewRouter} from "./routes/view.js"
 import {cors} from "./middlewares/cors.js"
 
 
-export function createApp({movieModel}){
+export function createApp({movieModel,userModel}){
 	// init ----------
 	const app=express()
 	app.disable("x-powered-by")
@@ -16,6 +17,7 @@ export function createApp({movieModel}){
 
 	// movies ----------
 	app.use("/movies",createMovieRouter({movieModel}))
+	app.use("/users",createUserRouter({userModel}))
 
 	// view ----------
 	app.use("/view",viewRouter)
@@ -37,4 +39,5 @@ export function createApp({movieModel}){
 }
 
 import {MovieModel} from "./models/mysql/movie.js"
-createApp({movieModel:MovieModel})
+import { UserModel } from "./models/mysql/user.js"
+createApp({movieModel:MovieModel,userModel:UserModel})

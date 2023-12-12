@@ -62,15 +62,3 @@ export class Notify{
 		},this.time)
 	}
 }
-
-const link = document.createElement("a")
-link.classList.add("link")
-link.href=`${location.origin}/view/home`
-const img = new Image()
-link.appendChild(img)
-img.src="./assets/images/back.svg"
-img.classList.add("back")
-img.id="back"
-img.addEventListener("load",()=>{
-	document.body.appendChild(link)
-})

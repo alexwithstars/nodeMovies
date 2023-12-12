@@ -4,16 +4,61 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="static/css/home.css">
-	<title>Inicio</title>
+	<link rel="stylesheet" type="text/css" href="static/css/notify.css">
+	<title>Consultar</title>
 </head>
 <body>
+	<nav>
+		<div class="left">
+			<img src="./assets/images/logo.png" alt="logo">
+		</div>
+		<div class="right">
+			<ul>
+				<li value="add" class="a">Contribuir</li>
+				<li value="edit" class="a">editar</li>
+				<li value="delete" class="a">eliminar</li>
+			</ul>
+			<div class="profile" id="profile">
+				<img src="./assets/images/user.svg" alt="profile" id="profileImg">
+				<div class="modal">
+					<div class="username">
+						<img src="./assets/images/user.svg" alt="user">
+						<span id="username"></span>
+					</div>
+					<div class="logout" id="logout">
+						<img src="./assets/images/logout.svg" alt="logout">
+						<span>Cerrar sesion</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</nav>
 	<h1>Alex Movies</h1>
-	<ul class="list">
-		<li><a href="query">consultar</a></li>
-		<li><a href="add">agregar</a></li>
-		<li><a href="edit">editar</a></li>
-		<li><a href="delete">eliminar</a></li>
-	</ul>
-	<script src="static/js/home.js" type="text/javascript"></script>
+	<div class="cblur" style="--l:-50px;--t:-50px;--cbcolor:#a0a;"></div>
+	<div class="cblur" style="--r:-50px;--b:-50px;--cbcolor:#0fa;--delay:2s;"></div>
+	<main id="mainContent">
+		<div class="loading">
+			<span style="--delay:0s;"></span>
+			<span style="--delay:0.2s;"></span>
+			<span style="--delay:0.4s;"></span>
+			<span style="--delay:0.6s;"></span>
+			<span style="--delay:0.8s;"></span>
+			<span style="--delay:1s;"></span>
+		</div>
+	</main>
+	<script src="static/js/home.js" type="module"></script>
+	<script>
+		"use strict";
+		const qs = sel => document.querySelector(sel)
+		const qsa = sel => document.querySelectorAll(sel)
+		const gti = sel => document.getElementById(sel)
+		const gtg = sel => document.getElementsByTagName(sel)
+		
+		const profileImg = gti("profileImg")
+		const img = new Image()
+		img.src=localStorage.getItem("profileImg")
+		img.addEventListener("load",()=>profileImg.src=img.src)
+
+	</script>
 </body>
 </html>

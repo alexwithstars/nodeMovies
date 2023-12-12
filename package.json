@@ -1,7 +1,7 @@
 {
-  "name": "rest-api",
+  "name": "user-practice",
   "version": "1.0.0",
-  "description": "mi primera rest api con express",
+  "description": "encripted users credentials practice",
   "main": "app.js",
   "type": "module",
   "scripts": {

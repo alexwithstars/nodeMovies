@@ -228,3 +228,16 @@
 		background: #aaa;
 	}
 }
+.link{
+	position: fixed;
+	left: 30px;
+	top: 20px;
+	cursor: pointer;
+}
+.back{
+	height: 30px;
+	transition: scale 0.3s;
+	&:hover{
+		scale: 1.2 1;
+	}
+}

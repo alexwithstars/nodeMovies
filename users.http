@@ -1,0 +1,40 @@
+### USERS
+GET http://localhost:3000/users
+
+###
+GET http://localhost:3000/users/
+
+###
+GET http://localhost:3000/df
+
+###
+POST http://localhost:3000/users/signup
+Content-Type: application/json
+
+{
+  "username":"aleafdfdsfsis",
+  "password":"1234ds5678",
+  "email":"haolaa@gmafdil.com"
+}
+
+###
+POST http://localhost:3000/users/login
+Content-Type: application/json
+
+{
+  "username":"alesis",
+  "password":"12345678"
+}
+
+###
+POST http://localhost:3000/users/remove
+Content-Type: application/json
+
+{
+  "username":"alesis",
+  "password":"12345678"
+}
+
+
+### view
+GET http://localhost:3000/view/error.html
