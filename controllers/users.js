@@ -1,4 +1,4 @@
-import {validateUser,userCredentials,partialValidateUser}  from "../schemas/users.js"
+import {validateUser,userCredentials,partialValidateUser,logKeyValidate}  from "../schemas/users.js"
 
 export class UserController{
 	constructor({userModel}){
@@ -9,24 +9,34 @@ export class UserController{
 		if(users) return res.json(users)
 		next()
 	}
-	verify = async (req,res,next) => {
+	verifyKey = async (req,res,next) => {
+		const logkey = await logKeyValidate(req.body)
+		if(logkey.error){
+			res.status(400)
+			return next(logkey.error.issues)
+		}
+		const success = await this.userModel.verifyKey({input:logkey.data})
+		if(success) return res.json({"privatekey":success})
+		next("invalid key")
+	}
+	login = async (req,res,next) => {
 		const credentials = await userCredentials(req.body)
 		if(credentials.error){
 			res.status(400)
 			return next(credentials.error.issues)
 		}
-		const user = await this.userModel.verify({input:credentials.data})
+		const user = await this.userModel.login({input:credentials.data})
 		if(user) return res.json(user)
 		res.status(404)
 		next("Incorrect username or password")
 	}
-	create = async (req,res,next) => {
+	signup = async (req,res,next) => {
 		const user =await validateUser(req.body)
 		if(user.error){
 			res.status(400)
 			return next(user.error.issues)
 		}
-		const response = await this.userModel.create({input:user.data})
+		const response = await this.userModel.signup({input:user.data})
 		if(response) return res.status(201).json(response)
 		if(response==null) {
 			const users = await this.userModel.getAll()

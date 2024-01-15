@@ -10,9 +10,10 @@ export function createUserRouter({userModel}){
 	usersRouter.get("/",userController.getAll)
 
 	// post ----------
-	usersRouter.post("/signup",userController.create)
-	usersRouter.post("/login",userController.verify)
+	usersRouter.post("/signup",userController.signup)
+	usersRouter.post("/login",userController.login)
 	usersRouter.post("/remove",userController.delete)
+	usersRouter.post("/check",userController.verifyKey)
 
 	// patch ----------
 	usersRouter.patch("/update",userController.update)

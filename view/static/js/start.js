@@ -6,9 +6,31 @@ const gti = sel => document.getElementById(sel)
 const gtg = sel => document.getElementsByTagName(sel)
 
 ;(async function(){
-	if(localStorage.getItem("logged")=="true"){
-		location.assign(`${location.origin}/view/home`)
+	try{
+		const body =JSON.stringify({
+			logkey:localStorage.getItem("logkey") ?? "",
+			username:localStorage.getItem("username") ?? "",
+		})
+		const request = await fetch(`${location.origin}/users/check`,{
+			method:"POST",
+			headers:{
+				"Content-Type":"application/json"
+			},
+			body
+		})
+		const response = await request.json()
+		if(!response.error){
+			location.assign(`${location.origin}/view/home`)
+		}
+	} catch {
+		new Notify({
+			text:"Failed fetch, try reload window",
+			time:10000
+		})
+		return false
 	}
+	localStorage.setItem("stop","don't touch or your session will be corrupted")
+	return true
 })()
 
 const logmodel = gti("logmodel")
@@ -23,7 +45,6 @@ const password = gti("password")
 const email = gti("email")
 const confirm = gti("confirm")
 const allInps = qsa("#form input")
-const content = qse("main")
 const sweye = qsa(".switch")
 const passwords = qsa("#form input[type='password']")
 let create = false
@@ -89,31 +110,19 @@ async function login(){
 				})
 				return
 			}
+			new Notify({
+				text:"Incorrect username or password",
+				color:"#f88"
+			})
 			response.error.forEach(entrie=>{
 				gti(`${entrie.path[0]}`).classList.add("invalid")
 			})
 			return
 		}
-		if(response.error){
-			new Notify({
-				text:"Incorrect username or password",
-				color:"#f88"
-			})
-			return
-		}
-		localStorage.setItem("logged",true)
-		localStorage.setItem("username",username.value)
+		localStorage.setItem("logkey",response.logkey)
+		localStorage.setItem("username",response.username)
 		allInps.forEach(entrie=>entrie.value='')
 		location.assign(`${location.origin}/view/home`)
-		// new Notify({
-		// 	text:"Login completed",
-		// 	color:"#afa"
-		// })
-		// document.body.removeChild(content)
-		// const elem = document.createElement("div")
-		// elem.classList.add("logmodal")
-		// elem.innerHTML=logged
-		// document.body.appendChild(elem)
 	} catch(e) {
 		new Notify({
 			text:"Failed fetch (check console)"

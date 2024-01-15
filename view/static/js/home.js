@@ -1,9 +1,38 @@
 import {Notify} from "./notify.js"
 
-(async function(){
-	if(localStorage.getItem("logged")!="true"){
-		location.assign(`${location.origin}/view/start`)
+const logged = await (async function(){
+	try{
+		const body =JSON.stringify({
+			logkey:localStorage.getItem("logkey") ?? "",
+			username:localStorage.getItem("username") ?? "",
+		})
+		const request = await fetch(`${location.origin}/users/check`,{
+			method:"POST",
+			headers:{
+				"Content-Type":"application/json"
+			},
+			body
+		})
+		const response = await request.json()
+		if(response.error){
+			new Notify({
+				text:"you are not logged in",
+				color:"#F88",
+				time:3000
+			})
+			await new Promise(resolve=>setTimeout(()=>resolve(),3000))
+			location.assign(`${location.origin}/view/start`)
+			return false
+		}
+	} catch {
+		new Notify({
+			text:"Failed fetch, try reload window",
+			time:10000
+		})
+		return false
 	}
+	localStorage.setItem("stop","don't touch or your session will be corrupted")
+	return true
 })()
 
 const movies=await (async function(){
@@ -23,7 +52,7 @@ const movies=await (async function(){
 })()
 
 ;(function(){
-	if(!movies){
+	if(!movies || !logged){
 		return
 	}
 	if(movies.error){

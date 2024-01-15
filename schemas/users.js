@@ -7,13 +7,17 @@ const userSchema=zod.object({
 })
 const credentialsSchema=zod.object({
 	username:zod.string().min(5).max(50),
-	password:zod.string().min(8).max(50),
+	password:zod.string().min(8).max(50)
 })
 const updateSchema=zod.object({
 	username:zod.string().min(5).max(50),
 	password:zod.string().min(8).max(50),
 	newpassword:zod.string().min(8).max(50),
 	email:zod.string().email().min(4).max(255)
+})
+const logkeySchema=zod.object({
+	logkey:zod.string().min(8).max(50),
+	username:zod.string().min(5).max(50)
 })
 
 export function validateUser(input){
@@ -24,4 +28,7 @@ export function partialValidateUser(input){
 }
 export function userCredentials(input){
 	return credentialsSchema.safeParseAsync(input)
+}
+export function logKeyValidate(input){
+	return logkeySchema.safeParseAsync(input)
 }

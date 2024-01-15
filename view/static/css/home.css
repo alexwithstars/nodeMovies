@@ -194,16 +194,83 @@ nav{
 		}
 	}
 }
-h1{
-	font-size: 72px;
-	/* font-family: sans-serif; */
-	font-weight: 600;
-	color: transparent;
-	background: linear-gradient(90deg,#0fa,#0af);
-	background-clip: text;
-	-webkit-background-clip: text;
-	text-align: center;
-	filter: drop-shadow(0 5px 5px #0aa6);
+.home{
+	display: flex;
+	width: 100%;
+	min-height: 300px;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	align-items: center;
+	& > h1{
+		font-size: 72px;
+		font-weight: 600;
+		color: transparent;
+		background: linear-gradient(90deg,#0fa,#0af);
+		background-clip: text;
+		-webkit-background-clip: text;
+		filter: drop-shadow(0 5px 5px #0aa6);
+		display: flex;
+		align-items: center;
+		height: 100%;
+		width: min-content;
+		line-height: 1.2;
+		&::before{
+			content: '';
+			display: block;
+			height: 250px;
+			aspect-ratio: 1/1;
+			background: url("../../assets/images/image.png");
+			background-size: contain;
+			background-position: center;
+		}
+	}
+	& > .carrusel{
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		height: 250px;
+		flex-grow: 0.5;
+		padding: 0 150px;
+		font-weight: 600;
+		counter-reset: phrases;
+		border-top: 1px solid #ddd4;
+		border-bottom: 1px solid #ddd4;
+		background: linear-gradient(90deg,#0000,#0e0c1e,#0000);
+		overflow: hidden;
+		position: relative;
+		& > span{
+			position: absolute;
+			font-size: 72px;
+			color: transparent;
+			background: linear-gradient(90deg,#0fa,#0af);
+			background-clip: text;
+			-webkit-background-clip: text;
+			filter: drop-shadow(0 5px 5px #0aa6);
+			counter-increment: phrases;
+			animation: cine 50s var(--delay) ease-in-out infinite forwards;
+			backface-visibility: hidden;
+			opacity: 0;
+		}
+	}
+}
+@keyframes cine {
+	0%{
+		transform: translate(50px);
+		opacity: 0;
+	}
+	1%{
+		transform: translate(0px);
+		opacity: 1;
+	}
+	10%{
+		transform: translate(0px);
+		opacity: 1;
+	}
+	11%{
+		transform: translate(-50px);
+		opacity: 0;
+	}
 }
 main{
 	display: flex;
@@ -232,7 +299,6 @@ main{
 		border-radius: var(--bdr);
 		& > .title{
 			text-align: center;
-			/* font-family: verdana; */
 			font-weight: 600;
 			font-size: 32px;
 			white-space: nowrap;
@@ -247,7 +313,6 @@ main{
 		}
 		& > .top,& > .mid{
 			display: flex;
-			/* font-family: sans-serif; */
 			font-weight: 600;
 			width: 100%;
 			padding: 0 10px;
@@ -291,7 +356,6 @@ main{
 			gap: 1ch;
 			& > span{
 				border-radius: 100vmax;
-				/* font-family: sans-serif; */
 				font-weight: 600;
 				padding: 3px 6px;
 				color: #ddd;
