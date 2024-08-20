@@ -1,4 +1,4 @@
-const form=`
+const form = `
 <div class="inp">
 <input type="text" name="title" id="title" required>
 <label for="title">Titulo</label>
@@ -49,6 +49,6 @@ const form=`
 </div>
 </div>
 `
-const element = document.createElement("movieForm")
+const element = document.createElement('movieForm')
 element.innerHTML = form
 export const movieForm = element
