@@ -2,11 +2,11 @@
   "name": "user-practice",
   "version": "1.0.0",
   "description": "encripted users credentials practice",
-  "main": "app.js",
+  "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "node app.js",
-    "dev": "node --watch app.js",
+    "start": "node index.js",
+    "dev": "node --watch index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "standard --fix"
   },
