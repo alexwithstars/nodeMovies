@@ -38,5 +38,7 @@ export function createApp ({ movieModel, userModel }) {
   app.listen(PORT, () => {
     console.log(`listening on port: ${PORT}`)
   })
+
+  return app
 }
-createApp({ movieModel: MovieModel, userModel: UserModel })
+export default createApp({ movieModel: MovieModel, userModel: UserModel })
