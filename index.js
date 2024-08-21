@@ -24,6 +24,9 @@ export function createApp ({ movieModel, userModel }) {
 
   // view ----------
   app.use('/view', viewRouter)
+  app.get('/', (req, res) => {
+    res.redirect('/view/home')
+  })
 
   // Errors ----------
   app.use((req, res) => {
